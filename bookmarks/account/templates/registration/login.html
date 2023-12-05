@@ -11,12 +11,15 @@
             Please try again.
         </p>
     {% else %}
-        <p>Please, use the following form to log-in:</p>
+        <p>
+            Please, use the following form to log-in:
+        If you don't have an account <a href="{% url "register" %}">register here</a>
+        </p>
     {% endif %}
     <div class="login-form">
         <form action="{% url "login" %}" method='post'>
-            {{form.as_p}}
             {% csrf_token %}
+            {{form.as_p}}
             <input type="hidden", name="next" value="{{ next }}">
             <p><input type="submit" value="Log-in"></p>
         </form>
